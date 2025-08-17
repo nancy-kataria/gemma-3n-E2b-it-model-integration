@@ -2,18 +2,15 @@ from transformers import pipeline
 from dotenv import load_dotenv
 import os
 import torch
-from huggingface_hub import login
 
 load_dotenv()
 
 HF_MODEL_PATH = os.getenv("HF_MODEL_PATH")
 
 try:
-    login(token=os.getenv("HF_TOKEN"))
-    
     image_text_to_text_generator = pipeline(
         "image-text-to-text",
-        model="google/gemma-3n-E2B-it",
+        model=HF_MODEL_PATH,
         device="cpu",
         torch_dtype=torch.bfloat16,
     )
@@ -28,7 +25,7 @@ try:
         {
         "role": "user",
         "content": [
-            {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG"},
+            {"type": "image", "image": os.getenv("PHOTO_PATH")},
             {"type": "text", "text": "What animal is on the candy?"}
           ]
         }

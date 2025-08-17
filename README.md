@@ -1,11 +1,11 @@
-# GEMMA-3n-E4b-it Model Integration
+# Gemma-3n-E4b-it Model Integration
 
 Gemma-3n is a lightweight model designed to work locally on your system without the internet conneection. 
 
-Goal
+## Goal
 Running the model using python and hugging face transformers.
 
-Running the model
+## How to use the model
 
 1. Create a virtual environment.
  ```
